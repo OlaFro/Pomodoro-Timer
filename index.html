@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="#" />
   </head>
   <body>
     <main>
@@ -12,16 +13,35 @@
         <span id="minutes"></span><span id="colon">:</span
         ><span id="seconds">00</span>
       </div>
+
       <div class="buttons">
         <button id="startBtn">start</button>
         <button id="stopBtn" class="hidden">reset</button>
       </div>
-      <!-- <div class="navigation" id="boxes">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-      </div> -->
+      <p class="info" id="info">Press start</p>
+
+      <div class="length">
+        <div class="adjust">
+          <div class="row">
+            <span id="sessionMinus">-</span>
+            <span id="sessionPlus">+</span>
+          </div>
+          <p id="sessionDuration">Session 25 min</p>
+        </div>
+        <div class="adjust">
+          <div class="row">
+            <span id="breakMinus">-</span>
+            <span id="breakPlus">+</span>
+          </div>
+          <p id="breakDuration">Break 3 min</p>
+        </div>
+      </div>
+      <div class="navigation">
+        <div class="box" id="circle1"></div>
+        <div class="box" id="circle2"></div>
+        <div class="box" id="circle3"></div>
+        <div class="box" id="circle4"></div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

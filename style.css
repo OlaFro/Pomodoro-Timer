@@ -1,11 +1,16 @@
 .box {
-  border: 1px solid black;
+  border: 1px solid white;
   width: 1rem;
   height: 1rem;
+  border-radius: 50%;
 }
 
 .navigation {
   display: flex;
+  justify-content: space-around;
+  width: 8rem;
+  height: 8rem;
+  align-items: center;
 }
 
 main {
@@ -18,4 +23,50 @@ main {
 
 .hidden {
   display: none;
+}
+
+body {
+  background: #649173; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #dbd5a4,
+    #649173
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #dbd5a4,
+    #649173
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: white;
+  font-size: 0.8rem;
+}
+
+.clock {
+  font-size: 3rem;
+  margin: 1rem;
+}
+
+.length {
+  margin-top: 3rem;
+}
+
+.adjust {
+  width: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #3659423e;
+  margin-top: 1rem;
+}
+.length span {
+  font-size: 2rem;
+  /* width: 2rem; */
+  cursor: pointer;
+}
+.row {
+  display: flex;
+  justify-content: space-evenly;
+  width: 8rem;
+  border-bottom: 2px solid #3659423e;
 }
