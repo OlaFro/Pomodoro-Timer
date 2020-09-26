@@ -6,7 +6,7 @@ const stopBtn = document.getElementById("stopBtn");
 const boxes = document.querySelectorAll("boxes");
 
 // app variables
-let minutesInSession = 5;
+let minutesInSession = 25;
 let secondsInTotal = minutesInSession * 60;
 
 var counting;
@@ -19,13 +19,12 @@ startBtn.addEventListener("click", pomodoro);
 
 function pomodoro() {
   secondsInTotal--;
-
-  pause();
+  startBtn.classList.toggle("hidden");
+  stopBtn.classList.toggle("hidden");
   counting = setInterval(countDown, 100);
 }
 
 function countDown() {
-  startBtn.textContent = "pause";
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
 
@@ -42,31 +41,11 @@ function countDown() {
   secondsInTotal--;
 }
 
-// stopBtn.addEventListener("click", () => {
-//   clearInterval(counting);
-// });
-
-function pause() {
-  if ((startBtn.textContent = "pause")) {
-    startBtn.removeEventListener("click", pomodoro);
-    startBtn.addEventListener("click", clearInt);
-  }
-}
-
-function clearInt() {
+stopBtn.addEventListener("click", () => {
+  startBtn.classList.toggle("hidden");
+  stopBtn.classList.toggle("hidden");
   clearInterval(counting);
-  startBtn.textContent = "↺";
-  refresh();
-}
-
-function refresh() {
-  if ((startBtn.textContent = "↺")) {
-    startBtn.removeEventListener("click", clearInt);
-    startBtn.addEventListener("click", () => {
-      startBtn.textContent = "start";
-      minutes.textContent = minutesInSession;
-      seconds.textContent = secondsInTotal % 60;
-      pomodoro();
-    });
-  }
-}
+  minutes.textContent = minutesInSession;
+  seconds.textContent = "00";
+  secondsInTotal = minutesInSession * 60;
+});
