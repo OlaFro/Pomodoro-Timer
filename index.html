@@ -9,38 +9,41 @@
   </head>
   <body>
     <main>
-      <div class="clock">
-        <span id="minutes"></span><span id="colon">:</span
-        ><span id="seconds">00</span>
-      </div>
+      <div class="timer">
+        <div class="clock">
+          <span id="minutes">25</span><span id="colon">:</span
+          ><span id="seconds">00</span>
+        </div>
 
-      <div class="buttons">
+        <div class="navigation">
+          <div class="box" id="circle1"></div>
+          <div class="box" id="circle2"></div>
+          <div class="box" id="circle3"></div>
+          <div class="box" id="circle4"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <p>Timer settings:</p>
+
+        <div class="range">
+          <input
+            type="range"
+            id="minS"
+            name="minS"
+            min="1"
+            max="35"
+            value="25"
+          />
+          <label for="minS" id="displayS">Session 25 min</label>
+        </div>
+
+        <div class="range">
+          <input type="range" id="minB" name="minB" min="1" max="10" />
+          <label for="minB" id="displayB">Break 3 min</label>
+        </div>
+        <p class="info" id="info">Press start</p>
         <button id="startBtn">start</button>
         <button id="stopBtn" class="hidden">reset</button>
-      </div>
-      <p class="info" id="info">Press start</p>
-
-      <div class="length">
-        <div class="adjust">
-          <div class="row">
-            <span id="sessionMinus">-</span>
-            <span id="sessionPlus">+</span>
-          </div>
-          <p id="sessionDuration">Session 25 min</p>
-        </div>
-        <div class="adjust">
-          <div class="row">
-            <span id="breakMinus">-</span>
-            <span id="breakPlus">+</span>
-          </div>
-          <p id="breakDuration">Break 3 min</p>
-        </div>
-      </div>
-      <div class="navigation">
-        <div class="box" id="circle1"></div>
-        <div class="box" id="circle2"></div>
-        <div class="box" id="circle3"></div>
-        <div class="box" id="circle4"></div>
       </div>
     </main>
     <script src="script.js"></script>

@@ -3,49 +3,32 @@ const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
-const sessionMinus = document.getElementById("sessionMinus");
-const sessionPlus = document.getElementById("sessionPlus");
-const breakMinus = document.getElementById("breakMinus");
-const breakPlus = document.getElementById("breakPlus");
-const sessionDuration = document.getElementById("sessionDuration");
-const breakDuration = document.getElementById("breakDuration");
+const minS = document.getElementById("minS");
+const minB = document.getElementById("minB");
+const displayS = document.getElementById("displayS");
+const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
 
 // app variables
-let minutesAdjust = minutesInSession;
-// minutesInSession variable must come from the adjust panel
 let minutesInSession = 25;
-let secondsInTotal = minutesInSession * 60;
+let minutesInBreak = 3;
+let secondsInTotal;
 var counting;
 
-// setting the duration of session/break
-
-sessionMinus.addEventListener("click", () => {
-  console.log(secondsInTotal);
-  if (minutesInSession > 0) {
-    minutesAdjust = minutesInSession - 1;
-    sessionDuration.textContent = "Session " + minutesInSession + " min";
-    minutes.textContent = minutesInSession;
-  } else {
-    sessionMinus.disabled = true;
-  }
-  return minutesAdjust;
-});
-
-sessionPlus.addEventListener("click", () => {
-  if (minutesInSession <= 34) {
-    minutesInSession++;
-    sessionDuration.textContent = "Session " + minutesInSession + " min";
-    minutes.textContent = minutesInSession;
-  } else {
-    sessionMinus.disabled = true;
-  }
+minS.addEventListener("input", () => {
+  displayS.textContent = "Session " + minS.value + " min";
+  minutesInSession = parseInt(minS.value);
+  secondsInTotal = minutesInSession * 60;
+  minutes.textContent = parseInt(minS.value);
   return minutesInSession;
 });
 
-// timer functions:
+minB.addEventListener("input", () => {
+  displayB.textContent = "Break " + minB.value + " min";
+  minutesInBreak = parseInt(minB.value);
+  return minutesInBreak;
+});
 
-minutes.textContent = minutesInSession;
 startBtn.addEventListener("click", pomodoro);
 
 function pomodoro() {
@@ -54,11 +37,11 @@ function pomodoro() {
   secondsInTotal--;
   countDown();
 
-  counting = setInterval(countDown, 100);
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
   info.textContent = "You are in the session";
   document.body.style.color = "white";
+  counting = setInterval(countDown, 100);
 }
 
 function countDown() {
@@ -91,16 +74,24 @@ stopBtn.addEventListener("click", () => {
 
 function breakMode() {
   console.log("break");
-  minutesInSession = 1;
+  minutesInSession = minB.value;
   minutes.textContent = minutesInSession;
   seconds.textContent = "00";
   secondsInTotal = minutesInSession * 60;
-  info.textContent = "Break!";
+  info.textContent = `Break for ${minB.value} minutes!`;
   document.body.style.color = "black";
 
   counting = setInterval(countDown, 100);
   if (secondsInTotal === 0) {
     clearInterval(counting);
-    pomodoro();
   }
+  counting;
 }
+
+// BUGS:
+// NaN in the timer after start
+// after break comes another break instead of session
+
+// PROBLEMS:
+// how to count the whole cycles and fill every dot after finishing one?
+// how to stop the loop of session/break?
