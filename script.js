@@ -35,14 +35,8 @@ minB.addEventListener("input", () => {
 startBtn.addEventListener("click", () => {
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
-  pomodoro();
+  sessionMode();
 });
-
-function pomodoro() {
-  if (cycle < 4) {
-    sessionMode();
-  }
-}
 
 function sessionMode() {
   console.log("session");
@@ -53,6 +47,7 @@ function sessionMode() {
   info.textContent = "You are in the session";
   document.body.style.color = "white";
   timeForBreak = true;
+  secondsInTotal = minutesInSession * 60;
   counting = setInterval(countDown, 100);
 }
 
@@ -83,9 +78,7 @@ function countDown() {
 
   if (secondsInTotal === 0) {
     clearInterval(counting);
-    cycle++;
-    console.log(cycle);
-    pomodoro();
+    sessionMode();
   }
 
   //   console.log(secondsInTotal);
@@ -107,11 +100,10 @@ stopBtn.addEventListener("click", () => {
 
 /*
 BUGS:
-NaN in the timer after start
-after break secondsInTotal goes to negative and doesn't stop, because it never goes to zero again.
-
+none at this stage
 
 PROBLEMS:
 how to count the whole cycles and fill every dot after finishing one?
-idea: for loop? how about performance?
+idea: for loop? how about performance? 
+forEach or map / dynamic ID in an array for filling the dots 
 */
