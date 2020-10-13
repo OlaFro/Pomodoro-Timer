@@ -67,7 +67,7 @@ function countDown() {
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
 
-  if (secondsInTotal < 10) {
+  if (seconds.textContent < 10) {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
 
