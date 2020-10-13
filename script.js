@@ -53,10 +53,10 @@ function sessionMode() {
 
 function breakMode() {
   console.log("break");
-  minutesInSession = minB.value;
-  minutes.textContent = minutesInSession;
+  minutesInBreak = minB.value;
+  minutes.textContent = minutesInBreak;
   seconds.textContent = "00";
-  secondsInTotal = minutesInSession * 60;
+  secondsInTotal = minutesInBreak * 60;
   info.textContent = `Break for ${minB.value} minutes!`;
   document.body.style.color = "black";
   timeForBreak = false;
