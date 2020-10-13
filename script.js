@@ -8,6 +8,7 @@ const minB = document.getElementById("minB");
 const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
+const circles = document.querySelectorAll("box")
 
 // app variables
 let minutesInSession = 25;
@@ -72,15 +73,15 @@ function countDown() {
   }
 
   if (secondsInTotal === 0 && timeForBreak == true) {
+
     clearInterval(counting);
     breakMode();
   }
 
-  if (secondsInTotal === 0) {
+  if (secondsInTotal === 0 && timeForBreak == false) {
     clearInterval(counting);
     sessionMode();
   }
-
   //   console.log(secondsInTotal);
   //   console.log(new Date().getSeconds());
   secondsInTotal--;
@@ -92,18 +93,23 @@ stopBtn.addEventListener("click", () => {
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
   clearInterval(counting);
-  minutes.textContent = minutesInSession;
+  minutes.textContent = minS.value;
   seconds.textContent = "00";
   secondsInTotal = minutesInSession * 60;
   info.textContent = "Press start";
 });
+
+
+
+
 
 /*
 BUGS:
 none at this stage
 
 PROBLEMS:
-how to count the whole cycles and fill every dot after finishing one?
-idea: for loop? how about performance? 
-forEach or map / dynamic ID in an array for filling the dots 
+
+filling each dot after each session
+
+
 */
