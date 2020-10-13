@@ -1,4 +1,5 @@
 // DOM elements
+const body = document.querySelector("body")
 const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 const startBtn = document.getElementById("startBtn");
@@ -52,13 +53,16 @@ function sessionMode() {
       document.getElementById("circle1").style.backgroundColor="white"
       break
     case 2:
-      document.getElementById("circle2").style.backgroundColor="white"
+      document.getElementById("circle2").style.backgroundColor="white";
+      body.style.background = "linear-gradient(to right, #a18cd1, #fbc2eb)";   
     break
     case 3:
       document.getElementById("circle3").style.backgroundColor="white"
+      body.style.background = "linear-gradient(to left, #a3bded 0%, #6991c7 100%)";
     break
     case 4:
       document.getElementById("circle4").style.backgroundColor="white"
+      body.style.background = "linear-gradient(to right, #FFC796 0%, #FF6B95 100%)";
       timeForBreak = false;
       longBreak = true;
     break
@@ -66,7 +70,7 @@ function sessionMode() {
   }
   
 
-  info.textContent = "You are in the session";
+  info.textContent = `You are in the ${sessionCounter} session`;
   document.body.style.color = "white";
   timeForBreak = true;
   secondsInTotal = minutesInSession * 60;
@@ -92,7 +96,7 @@ function countDown() {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
 
-  if (secondsInTotal === 0 && timeForBreak == true) {
+  if (secondsInTotal === 0 && timeForBreak == true && sessionCounter<4) {
     sessionCounter++
     clearInterval(counting);
     breakMode();
@@ -105,7 +109,6 @@ function countDown() {
  
   if (secondsInTotal === 0 && sessionCounter===4){
     clearInterval(counting)
-    
   }
 
   secondsInTotal--;
@@ -136,9 +139,11 @@ stopBtn.addEventListener("click", () => {
 
 /*
 BUGS:
-
+how to start the counting right away after clicking start?
 
 PROBLEMS:
+
+how to stop the cycle?
 
 IN CASE OF UNEVEN SECONDS:
 console.log(secondsInTotal);
