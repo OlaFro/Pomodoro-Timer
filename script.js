@@ -19,7 +19,8 @@ let secondsInTotal;
 var counting;
 let timeForBreak = false;
 let sessionCounter = 1;
-let longBreak = false;
+let lastSession = false;
+let longerBreak = false
 
 
 // adjusting the duration of session/break
@@ -64,7 +65,7 @@ function sessionMode() {
       document.getElementById("circle4").style.backgroundColor="white"
       body.style.background = "linear-gradient(to right, #FFC796 0%, #FF6B95 100%)";
       timeForBreak = false;
-      longBreak = true;
+  lastSession = true;
     break
     default:
   }
@@ -74,6 +75,9 @@ function sessionMode() {
   document.body.style.color = "white";
   timeForBreak = true;
   secondsInTotal = minutesInSession * 60;
+  if (sessionCounter===4){
+    clearInterval(counting);
+  }
   counting = setInterval(countDown, 100);
 }
 
@@ -83,10 +87,12 @@ function breakMode() {
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Break for ${minB.value} minutes!`;
-  document.body.style.color = "black";
+  document.body.style.color = "#1B2631";
   timeForBreak = false;
+  
   counting = setInterval(countDown, 100);
 }
+
 
 function countDown() {
   minutes.textContent = Math.floor(secondsInTotal / 60);
@@ -96,25 +102,46 @@ function countDown() {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
 
-  if (secondsInTotal === 0 && timeForBreak == true && sessionCounter<4) {
+  if (secondsInTotal === 0 && timeForBreak == true && lastSession==false) {
     sessionCounter++
     clearInterval(counting);
     breakMode();
   }
 
-  if (secondsInTotal === 0 ) {
+  if (secondsInTotal === 0 && lastSession==false) {
     clearInterval(counting);
     sessionMode();
   }
  
-  if (secondsInTotal === 0 && sessionCounter===4){
+  if (secondsInTotal === 0 && longerBreak==false ){
     clearInterval(counting)
+    longBrake()
   }
+
+  if (secondsInTotal ===0 && longerBreak===true){
+    clearInterval(counting)
+  } 
+    
+  
 
   secondsInTotal--;
 
-  console.log(secondsInTotal);
+  console.log(sessionCounter);
 }
+
+function longBrake(){
+  console.log("break");
+  minutesInBreak = 1;
+  minutes.textContent = minutesInBreak;
+  secondsInTotal = minutesInBreak * 60;
+  info.textContent = `Take a longer 20 minutes break and start again`;
+  body.style.background = "white"
+  body.style.color = "red";
+  longerBreak = true;
+  
+  counting = setInterval(countDown, 100);
+}
+
 
 // stopping the timer
 stopBtn.addEventListener("click", () => {
