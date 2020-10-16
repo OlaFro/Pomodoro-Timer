@@ -1,51 +1,56 @@
+body {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100vw;
+  /* height: 100vh; */
+}
+
 main {
+  margin-top: 3rem;
+  width: 23rem;
+  height: 35rem;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.progress {
+  position: relative;
+}
+.progress-ring {
+  /* border: 1px solid red; */
+}
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 300;
+  font-size: 5rem;
 }
 
 .hidden {
   display: none;
 }
 
-body {
-  background: #649173; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to left,
-    #dbd5a4,
-    #649173
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left,
-    #dbd5a4,
-    #649173
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  color: white;
-  font-size: 0.8rem;
-}
-.timer {
-  width: 10rem;
-}
-.clock {
-  font-size: 3rem;
-  margin: 1rem;
-}
-
 .box {
-  border: 1px solid white;
+  border: 1px solid black;
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
+  margin: 1rem;
 }
 
 .navigation {
   display: flex;
-  justify-content: space-between;
-  height: 8rem;
-  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  text-align: center;
 }
 
 .range {

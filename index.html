@@ -6,15 +6,21 @@
     <title>Pomodoro Clock</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="#" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
   </head>
   <body>
     <main>
-      <div class="timer">
+      <div class="timer">    
+        <div class="progress">
+        <svg class="progress-ring" width="300" height="300">
+          <circle class="progress-ring__path" stroke="black" stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
+          <circle class="progress-ring__circle" stroke="black " stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
+        </svg>    
         <div class="clock">
           <span id="minutes">25</span><span id="colon">:</span
           ><span id="seconds">00</span>
         </div>
-
+      </div>
         <div class="navigation">
           <div class="box" id="circle1"></div>
           <div class="box" id="circle2"></div>
@@ -23,8 +29,7 @@
         </div>
       </div>
       <div class="panel">
-        <p>Timer settings:</p>
-
+        <p class="info" id="info">Press start</p>
         <div class="range">
           <input
             type="range"
@@ -41,10 +46,13 @@
           <input type="range" id="minB" name="minB" min="1" max="10" />
           <label for="minB" id="displayB">Break 3 min</label>
         </div>
-        <p class="info" id="info">Press start</p>
+        <div class="buttons">
+          <button id="pauseBtn">pause</button>
         <button id="startBtn">start</button>
         <button id="stopBtn" class="hidden">reset</button>
+        <button id="fullScreenBtn"> full screen </button>
       </div>
+    </div>
     </main>
     <script src="script.js"></script>
   </body>

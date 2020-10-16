@@ -10,6 +10,8 @@ const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
 const circles = document.querySelectorAll("box")
+const progress = document.querySelector(".circle__progress--fill")
+
 
 
 // app variables
@@ -97,7 +99,7 @@ function breakMode() {
 function countDown() {
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
-
+  
   if (seconds.textContent < 10) {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
@@ -122,11 +124,9 @@ function countDown() {
     clearInterval(counting)
   } 
     
-  
 
   secondsInTotal--;
 
-  console.log(sessionCounter);
 }
 
 function longBrake(){
