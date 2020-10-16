@@ -1,27 +1,44 @@
 body {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  width: 100vw;
-  /* height: 100vh; */
+  background-color: #e0e5ec;
 }
 
 main {
   margin-top: 3rem;
-  width: 23rem;
-  height: 35rem;
-  border: 1px solid black;
+  width: 22rem;
+  height: 37rem;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Roboto Condensed", sans-serif;
+  color: #212121;
+  background-color: #e0e5ec;
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.7),
+    -9px -9px 16px rgba(255, 255, 255, 0.6);
 }
 
 .progress {
   position: relative;
+  margin: 1rem 0 1rem 0;
 }
-.progress-ring {
-  /* border: 1px solid red; */
+.progress-ring__path {
+  opacity: 0.3;
+  stroke: #212121;
+}
+
+.progress-ring__circle {
+  stroke-dasharray: 1206.37157898;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: #212121;
+}
+
+@keyframes progress {
+  100% {
+    stroke-dashoffset: 1206.37157898;
+  }
 }
 .clock {
   position: absolute;
@@ -30,6 +47,7 @@ main {
   transform: translate(-50%, -50%);
   font-weight: 300;
   font-size: 5rem;
+  letter-spacing: -2px;
 }
 
 .hidden {
@@ -37,11 +55,14 @@ main {
 }
 
 .box {
-  border: 1px solid black;
+  /* border: 1px solid #212121; */
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
   margin: 1rem;
+  background-color: #e0e5ec;
+  box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5);
 }
 
 .navigation {
@@ -58,4 +79,40 @@ main {
   justify-content: space-between;
   align-items: center;
   width: 15rem;
+}
+
+.buttons {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+i {
+  color: #212121;
+  padding: 0;
+}
+
+button {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  box-shadow: 6px 6px 10px rgb(163, 177, 198, 0.7),
+    -6px -6px 10px rgba(255, 255, 255, 0.6);
+}
+
+button:active {
+  box-shadow: inset 3px 3px 5px 0 rgba(0, 0, 0, 0.2),
+    inset -3px -3px 5px 0 rgba(255, 255, 255, 0.5);
 }

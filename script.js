@@ -9,9 +9,10 @@ const minB = document.getElementById("minB");
 const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
-const circles = document.querySelectorAll("box")
-const progress = document.querySelector(".circle__progress--fill")
-
+const circles = document.querySelectorAll("box");
+const progress = document.getElementById("progress");
+const fullScreenBtn = document.getElementById("fullScreenBtn")
+const exitFullScreen = document.getElementById("exitFullScreenBtn")
 
 
 // app variables
@@ -44,43 +45,44 @@ startBtn.addEventListener("click", () => {
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
   sessionMode();
+  
 });
 
 function sessionMode() {
   // two lines to help the counter start right away:
   // secondsInTotal--;
   // countDown();
-
   switch(sessionCounter){
     case 1:
-      document.getElementById("circle1").style.backgroundColor="white"
+      document.getElementById("circle1").style.backgroundColor="#212121"
       break
+
     case 2:
-      document.getElementById("circle2").style.backgroundColor="white";
-      body.style.background = "linear-gradient(to right, #a18cd1, #fbc2eb)";   
+      document.getElementById("circle2").style.backgroundColor="#212121";
+        
     break
     case 3:
-      document.getElementById("circle3").style.backgroundColor="white"
-      body.style.background = "linear-gradient(to left, #a3bded 0%, #6991c7 100%)";
+      document.getElementById("circle3").style.backgroundColor="#212121"
+      
     break
     case 4:
-      document.getElementById("circle4").style.backgroundColor="white"
-      body.style.background = "linear-gradient(to right, #FFC796 0%, #FF6B95 100%)";
+      document.getElementById("circle4").style.backgroundColor="#212121"
       timeForBreak = false;
-  lastSession = true;
+      lastSession = true;
     break
     default:
   }
   
 
-  info.textContent = `You are in the ${sessionCounter} session`;
-  document.body.style.color = "white";
+  info.textContent = `You are in the session ${sessionCounter} `;
+
   timeForBreak = true;
   secondsInTotal = minutesInSession * 60;
+  progress.style.animation=`${secondsInTotal}s progress linear`;
   if (sessionCounter===4){
     clearInterval(counting);
   }
-  counting = setInterval(countDown, 100);
+  counting = setInterval(countDown, 1000);
 }
 
 function breakMode() {
@@ -89,17 +91,19 @@ function breakMode() {
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Break for ${minB.value} minutes!`;
-  document.body.style.color = "#1B2631";
   timeForBreak = false;
-  
-  counting = setInterval(countDown, 100);
+
+  counting = setInterval(countDown, 1000);
 }
 
 
 function countDown() {
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
+
   
+
+
   if (seconds.textContent < 10) {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
@@ -161,6 +165,30 @@ stopBtn.addEventListener("click", () => {
 });
 
 
+
+
+fullScreenBtn.addEventListener("click", ()=> {
+  
+  if (fullScreenBtn.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (fullScreenBtn.mozRequestFullScreen) { /* Firefox */
+    document.documentElement.mozRequestFullScreen();
+  } else if (fullScreenBtn.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    document.documentElement.webkitRequestFullscreen();
+  } else if (fullScreenBtn.msRequestFullscreen) { /* IE/Edge */
+    document.documentElement.msRequestFullscreen();
+  }
+  fullScreenBtn.classList.toggle("hidden");
+  exitFullScreen.classList.toggle("hidden");
+});
+
+
+exitFullScreen.addEventListener("click", ()=> {
+  document.exitFullscreen()
+  fullScreenBtn.classList.toggle("hidden");
+  exitFullScreen.classList.toggle("hidden");
+
+})
 
 
 

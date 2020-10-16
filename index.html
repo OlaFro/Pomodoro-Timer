@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="#" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
   </head>
   <body>
     <main>
@@ -14,7 +16,7 @@
         <div class="progress">
         <svg class="progress-ring" width="300" height="300">
           <circle class="progress-ring__path" stroke="black" stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
-          <circle class="progress-ring__circle" stroke="black " stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
+          <circle id="progress" class="progress-ring__circle" stroke="black " stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
         </svg>    
         <div class="clock">
           <span id="minutes">25</span><span id="colon">:</span
@@ -47,10 +49,11 @@
           <label for="minB" id="displayB">Break 3 min</label>
         </div>
         <div class="buttons">
-          <button id="pauseBtn">pause</button>
-        <button id="startBtn">start</button>
-        <button id="stopBtn" class="hidden">reset</button>
-        <button id="fullScreenBtn"> full screen </button>
+        <button id="pauseBtn"><i class="material-icons ">pause</i></button>
+        <button id="startBtn"><i class="material-icons ">play_arrow</i></button>
+        <button id="stopBtn" class="hidden"><i class="material-icons">autorenew</i></button>
+        <button id="fullScreenBtn"><i class="material-icons">fullscreen</i></button>
+        <button id="exitFullScreenBtn" class="hidden"><i class="material-icons">fullscreen_exit</i></button>
       </div>
     </div>
     </main>
