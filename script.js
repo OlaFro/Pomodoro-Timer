@@ -46,6 +46,8 @@ minB.addEventListener("input", () => {
 startBtn.addEventListener("click", () => {
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
+  // secondsInTotal = minutesInSession * 60;
+  // progress.style.animation= `${secondsInTotal}s progress linear`;
   sessionMode();
   
 });
@@ -79,12 +81,11 @@ function sessionMode() {
     default:
   }
   
-
   info.textContent = `You are in the session ${sessionCounter} `;
-
   timeForBreak = true;
   secondsInTotal = minutesInSession * 60;
-  progress.style.animation=`${secondsInTotal}s progress linear`;
+  // progress.style.animation= `${secondsInTotal}s progress linear`;
+  
   if (sessionCounter===4){
     clearInterval(counting);
   }
@@ -109,8 +110,6 @@ function countDown() {
   seconds.textContent = secondsInTotal % 60;
 
   
-
-
   if (seconds.textContent < 10) {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
@@ -161,7 +160,6 @@ stopBtn.addEventListener("click", () => {
   clearInterval(counting);
   sessionCounter = 1
   for (let circle of circles){
-    
     circle.style.backgroundColor= ""
     circle.style.boxShadow=`inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
       inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5)`;
@@ -223,7 +221,7 @@ how to synchronize the animation of the progress bar?
 
 TO DO:
 
-styling the progress bar
+animation of the progress bar
 adding sound
 
 
