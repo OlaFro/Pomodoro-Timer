@@ -13,23 +13,19 @@
   <body>
     <main>
       <div class="timer">    
-        <div class="progress">
-        <svg class="progress-ring" width="300" height="300">
-          <circle class="progress-ring__path" stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
-          <circle id="progress" class="progress-ring__circle" stroke-width="10" fill="transparent" r="142" cx="150" cy="150" />
-        </svg>    
-        <div class="clock">
-          <span id="minutes">25</span><span id="colon">:</span
-          ><span id="seconds">00</span>
+        <div class="circle">
+          <div class="path"></div>
+          <div class="clock">
+            <span id="minutes">25</span><span id="colon">:</span><span id="seconds">00</span>
         </div>
       </div>
+    </div>
         <div class="navigation">
           <div class="box" id="circle1"></div>
           <div class="box" id="circle2"></div>
           <div class="box" id="circle3"></div>
           <div class="box" id="circle4"></div>
         </div>
-      </div>
       <p class="info" id="info">Press start</p>
       <div class="panel">
         <div class="range">

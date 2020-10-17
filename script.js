@@ -2,6 +2,7 @@
 const body = document.querySelector("body")
 const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
+const colon = document.getElementById("colon")
 const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const minS = document.getElementById("minS");
@@ -10,7 +11,7 @@ const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
 const circles = document.querySelectorAll(".box");
-const progress = document.getElementById("progress");
+const progress = document.querySelector(".path");
 const fullScreenBtn = document.getElementById("fullScreenBtn")
 const exitFullScreen = document.getElementById("exitFullScreenBtn")
 const pauseStartBtn = document.getElementById("pauseStartBtn")
@@ -46,16 +47,14 @@ minB.addEventListener("input", () => {
 startBtn.addEventListener("click", () => {
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
-  // secondsInTotal = minutesInSession * 60;
-  // progress.style.animation= `${secondsInTotal}s progress linear`;
   sessionMode();
   
 });
 
+
+
 function sessionMode() {
-  // two lines to help the counter start right away:
-  // secondsInTotal--;
-  // countDown();
+
   switch(sessionCounter){
     case 1:
       document.getElementById("circle1").style.backgroundColor="#212121"
@@ -84,12 +83,14 @@ function sessionMode() {
   info.textContent = `You are in the session ${sessionCounter} `;
   timeForBreak = true;
   secondsInTotal = minutesInSession * 60;
-  // progress.style.animation= `${secondsInTotal}s progress linear`;
   
   if (sessionCounter===4){
     clearInterval(counting);
   }
+  progress.style.animation = `move ${secondsInTotal}s linear`;
   counting = setInterval(countDown, 1000);
+  rotateCircle(secondsInTotal)
+  
 }
 
 function breakMode() {
@@ -99,12 +100,13 @@ function breakMode() {
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Break for ${minB.value} minutes!`;
   timeForBreak = false;
-
   counting = setInterval(countDown, 1000);
+  rotateCircle(secondsInTotal)
 }
 
 
 function countDown() {
+  secondsInTotal--;
   console.log(secondsInTotal);
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
@@ -133,10 +135,12 @@ function countDown() {
   if (secondsInTotal ===0 && longerBreak===true){
     clearInterval(counting)
   } 
-    
+}
 
-  secondsInTotal--;
-
+function rotateCircle(duration){
+  progress.style.transform = "translate(-50%, 0%);";
+  progress.style.animation = `move ${duration}s linear`;
+  console.log("rotating for" + duration);
 }
 
 function longBrake(){
@@ -149,8 +153,19 @@ function longBrake(){
   body.style.color = "red";
   longerBreak = true;
   
+  progress.style.animation = `move ${secondsInTotal}s linear`;
   counting = setInterval(countDown, 1000);
+  rotateCircle(secondsInTotal)
 }
+
+
+// function theme(colorMode){
+//   minutes.style.color = "colorMode";
+//   colon.style.color = "colorMode";
+//   seconds.style.color = "colorMode";
+//   window.window.getComputedStyle(
+//     document.querySelector('.path'), '::after').style.color = "colorMode";
+// }
 
 
 // stopping the timer
@@ -164,11 +179,12 @@ stopBtn.addEventListener("click", () => {
     circle.style.boxShadow=`inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
       inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5)`;
   }
- 
   minutes.textContent = minS.value;
   seconds.textContent = "00";
   secondsInTotal = minutesInSession * 60;
   info.textContent = "Press start"; 
+  progress.style.animationPlayState="paused"
+  progress.style.transform="rotate(0deg)"
 });
 
 
@@ -189,7 +205,6 @@ fullScreenBtn.addEventListener("click", ()=> {
   exitFullScreen.classList.toggle("hidden");
 });
 
-
 exitFullScreen.addEventListener("click", ()=> {
   document.exitFullscreen()
   fullScreenBtn.classList.toggle("hidden");
@@ -199,10 +214,10 @@ exitFullScreen.addEventListener("click", ()=> {
 
 
 //pause the counting
-
 pauseStartBtn.addEventListener("click", ()=>{
   pauseStartBtn.classList.toggle("hidden");
   pauseEndBtn.classList.toggle("hidden");
+  progress.style.animationPlayState="paused"
   clearInterval(counting)
 })
 
@@ -210,6 +225,7 @@ pauseEndBtn.addEventListener("click", ()=>{
   counting = setInterval(countDown, 1000);
   pauseStartBtn.classList.toggle("hidden");
   pauseEndBtn.classList.toggle("hidden");
+  progress.style.animationPlayState="running"
 })
 
 
