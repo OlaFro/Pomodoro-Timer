@@ -57,22 +57,22 @@ function sessionMode() {
   switch(sessionCounter){
     case 1:
       document.getElementById("circle1").style.backgroundColor="#212121"
-      document.getElementById("circle1").style.boxShadow="none"
+    
       break
 
     case 2:
       document.getElementById("circle2").style.backgroundColor="#212121";
-      document.getElementById("circle2").style.boxShadow="none"
+    
         
     break
     case 3:
       document.getElementById("circle3").style.backgroundColor="#212121"
-      document.getElementById("circle3").style.boxShadow="none"
+    
       
     break
     case 4:
       document.getElementById("circle4").style.backgroundColor="#212121"
-      document.getElementById("circle4").style.boxShadow="none"
+    
       timeForBreak = false;
       lastSession = true;
     break
