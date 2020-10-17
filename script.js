@@ -10,8 +10,9 @@ const minB = document.getElementById("minB");
 const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
-const circles = document.querySelectorAll(".box");
+const dots = document.querySelectorAll(".box");
 const progress = document.querySelector(".path");
+const circle = document.querySelector(".circle")
 const fullScreenBtn = document.getElementById("fullScreenBtn")
 const exitFullScreen = document.getElementById("exitFullScreenBtn")
 const pauseStartBtn = document.getElementById("pauseStartBtn")
@@ -57,22 +58,22 @@ function sessionMode() {
 
   switch(sessionCounter){
     case 1:
-      document.getElementById("circle1").style.backgroundColor="#212121"
+      document.getElementById("circle1").style.backgroundColor="rgba(30, 136, 229, 0.7)"
       document.getElementById("circle1").style.boxShadow="none"
       break
 
     case 2:
-      document.getElementById("circle2").style.backgroundColor="#212121";
+      document.getElementById("circle2").style.backgroundColor="rgba(30, 136, 229, 0.7)";
       document.getElementById("circle2").style.boxShadow="none"
         
     break
     case 3:
-      document.getElementById("circle3").style.backgroundColor="#212121"
+      document.getElementById("circle3").style.backgroundColor="rgba(30, 136, 229, 0.7)"
       document.getElementById("circle3").style.boxShadow="none"
       
     break
     case 4:
-      document.getElementById("circle4").style.backgroundColor="#212121"
+      document.getElementById("circle4").style.backgroundColor="rgba(30, 136, 229, 0.7)"
       document.getElementById("circle4").style.boxShadow="none"
       timeForBreak = false;
       lastSession = true;
@@ -138,8 +139,9 @@ function countDown() {
 }
 
 function rotateCircle(duration){
-  progress.style.transform = "translate(-50%, 0%);";
-  progress.style.animation = `move ${duration}s linear`;
+  progress.style.transform = "rotate 0(deg)";
+  progress.style.animation = `moveTracker ${duration}s linear`;
+  // circle.style.animation = `rotateCircle ${duration}s linear`;
   console.log("rotating for" + duration);
 }
 
@@ -174,7 +176,7 @@ stopBtn.addEventListener("click", () => {
   stopBtn.classList.toggle("hidden");
   clearInterval(counting);
   sessionCounter = 1
-  for (let circle of circles){
+  for (let circle of dots){
     circle.style.backgroundColor= ""
     circle.style.boxShadow=`inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
       inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5)`;
