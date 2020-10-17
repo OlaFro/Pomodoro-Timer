@@ -7,11 +7,12 @@ body {
 main {
   margin-top: 3rem;
   width: 22rem;
-  height: 37rem;
+  height: 40rem;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   font-family: "Roboto Condensed", sans-serif;
   color: #212121;
   background-color: #e0e5ec;
@@ -48,7 +49,13 @@ main {
   font-weight: 300;
   font-size: 5rem;
   letter-spacing: -2px;
+  /* text-shadow: 0px 0px 2px rgb(92, 92, 92); */
 }
+
+/* .clock span {
+  box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.7),
+    -9px -9px 16px rgba(255, 255, 255, 0.6);
+} */
 
 .hidden {
   display: none;
@@ -56,8 +63,8 @@ main {
 
 .box {
   /* border: 1px solid #212121; */
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   margin: 1rem;
   background-color: #e0e5ec;
@@ -72,6 +79,8 @@ main {
 
 .info {
   text-align: center;
+  /* margin: 2rem 0 2rem 0; */
+  font-style: italic;
 }
 
 .range {
@@ -85,6 +94,7 @@ main {
   margin: 2rem 0 1rem 0;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 button,
@@ -101,13 +111,21 @@ input[type="reset"] {
 
 i {
   color: #212121;
-  padding: 0;
+}
+
+button:hover i {
+  color: white;
 }
 
 button {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   box-shadow: 4px 4px 8px rgb(163, 177, 198, 0.9),
     -4px -4px 8px rgba(255, 255, 255, 0.9);
 }
@@ -117,11 +135,18 @@ button:active {
     inset -3px -3px 5px 0 rgba(255, 255, 255, 0.5);
 }
 
+.mainBtn {
+  height: 3.3rem;
+  width: 3.3rem;
+}
+
+.mainBtn i {
+  font-size: 2rem;
+}
 /* styling the input range */
 
 input[type="range"] {
-  margin-bottom: 0.4rem;
-
+  margin-bottom: 0.7rem;
   -webkit-appearance: none;
   background: transparent;
   border-color: transparent;
@@ -137,7 +162,7 @@ input::-webkit-slider-runnable-track {
   cursor: pointer;
   background: #e0e5ec;
   box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
-    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5);
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.8);
   border-radius: 15px;
   /* border: 1px solid #e0e5ec; */
 }
@@ -148,7 +173,7 @@ input::-moz-range-track {
   cursor: pointer;
   background-color: #e0e5ec;
   box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
-    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5);
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.8);
   border-radius: 15px;
   border: 2px solid #e0e5ec;
 }
@@ -164,25 +189,21 @@ input::-ms-track {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   border-radius: 3px;
   cursor: pointer;
   border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.5),
-    -1px -1px 4px 0 rgba(255, 255, 255, 0.5);
+  background-color: #212121;
 }
 
 input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   border-radius: 3px;
   cursor: pointer;
   border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.5),
-    -1px -1px 4px 0 rgba(255, 255, 255, 0.5);
+  background-color: #212121;
   border: none;
 }

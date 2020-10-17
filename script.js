@@ -9,7 +9,7 @@ const minB = document.getElementById("minB");
 const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
-const circles = document.querySelectorAll("box");
+const circles = document.querySelectorAll(".box");
 const progress = document.getElementById("progress");
 const fullScreenBtn = document.getElementById("fullScreenBtn")
 const exitFullScreen = document.getElementById("exitFullScreenBtn")
@@ -57,22 +57,22 @@ function sessionMode() {
   switch(sessionCounter){
     case 1:
       document.getElementById("circle1").style.backgroundColor="#212121"
-    
+      document.getElementById("circle1").style.boxShadow="none"
       break
 
     case 2:
       document.getElementById("circle2").style.backgroundColor="#212121";
-    
+      document.getElementById("circle2").style.boxShadow="none"
         
     break
     case 3:
       document.getElementById("circle3").style.backgroundColor="#212121"
-    
+      document.getElementById("circle3").style.boxShadow="none"
       
     break
     case 4:
       document.getElementById("circle4").style.backgroundColor="#212121"
-    
+      document.getElementById("circle4").style.boxShadow="none"
       timeForBreak = false;
       lastSession = true;
     break
@@ -160,11 +160,13 @@ stopBtn.addEventListener("click", () => {
   stopBtn.classList.toggle("hidden");
   clearInterval(counting);
   sessionCounter = 1
-  document.getElementById("circle1").style.backgroundColor= ""
-  document.getElementById("circle2").style.backgroundColor= ""
-  document.getElementById("circle3").style.backgroundColor= ""
-  document.getElementById("circle4").style.backgroundColor= ""
-
+  for (let circle of circles){
+    
+    circle.style.backgroundColor= ""
+    circle.style.boxShadow=`inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
+      inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5)`;
+  }
+ 
   minutes.textContent = minS.value;
   seconds.textContent = "00";
   secondsInTotal = minutesInSession * 60;
@@ -221,7 +223,6 @@ how to synchronize the animation of the progress bar?
 
 TO DO:
 
-styling the input range
 styling the progress bar
 adding sound
 
