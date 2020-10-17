@@ -108,8 +108,8 @@ button {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
-  box-shadow: 6px 6px 10px rgb(163, 177, 198, 0.7),
-    -6px -6px 10px rgba(255, 255, 255, 0.6);
+  box-shadow: 4px 4px 8px rgb(163, 177, 198, 0.9),
+    -4px -4px 8px rgba(255, 255, 255, 0.9);
 }
 
 button:active {

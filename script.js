@@ -13,6 +13,8 @@ const circles = document.querySelectorAll("box");
 const progress = document.getElementById("progress");
 const fullScreenBtn = document.getElementById("fullScreenBtn")
 const exitFullScreen = document.getElementById("exitFullScreenBtn")
+const pauseStartBtn = document.getElementById("pauseStartBtn")
+const pauseEndBtn = document.getElementById("pauseEndBtn")
 
 
 // app variables
@@ -55,18 +57,22 @@ function sessionMode() {
   switch(sessionCounter){
     case 1:
       document.getElementById("circle1").style.backgroundColor="#212121"
+      document.getElementById("circle1").style.boxShadow="none"
       break
 
     case 2:
       document.getElementById("circle2").style.backgroundColor="#212121";
+      document.getElementById("circle2").style.boxShadow="none"
         
     break
     case 3:
       document.getElementById("circle3").style.backgroundColor="#212121"
+      document.getElementById("circle3").style.boxShadow="none"
       
     break
     case 4:
       document.getElementById("circle4").style.backgroundColor="#212121"
+      document.getElementById("circle4").style.boxShadow="none"
       timeForBreak = false;
       lastSession = true;
     break
@@ -98,6 +104,7 @@ function breakMode() {
 
 
 function countDown() {
+  console.log(secondsInTotal);
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
 
@@ -135,7 +142,7 @@ function countDown() {
 
 function longBrake(){
   console.log("break");
-  minutesInBreak = 1;
+  minutesInBreak = 20;
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Take a longer 20 minutes break and start again`;
@@ -143,7 +150,7 @@ function longBrake(){
   body.style.color = "red";
   longerBreak = true;
   
-  counting = setInterval(countDown, 100);
+  counting = setInterval(countDown, 1000);
 }
 
 
@@ -166,7 +173,7 @@ stopBtn.addEventListener("click", () => {
 
 
 
-
+// full screen 
 fullScreenBtn.addEventListener("click", ()=> {
   
   if (fullScreenBtn.requestFullscreen) {
@@ -191,14 +198,33 @@ exitFullScreen.addEventListener("click", ()=> {
 })
 
 
+//pause the counting
+
+pauseStartBtn.addEventListener("click", ()=>{
+  pauseStartBtn.classList.toggle("hidden");
+  pauseEndBtn.classList.toggle("hidden");
+  clearInterval(counting)
+})
+
+pauseEndBtn.addEventListener("click", ()=>{
+  counting = setInterval(countDown, 1000);
+  pauseStartBtn.classList.toggle("hidden");
+  pauseEndBtn.classList.toggle("hidden");
+})
+
 
 /*
 BUGS:
 how to start the counting right away after clicking start?
+how to synchronize the animation of the progress bar?
 
-PROBLEMS:
 
-how to stop the cycle?
+TO DO:
+
+styling the input range
+styling the progress bar
+adding sound
+
 
 IN CASE OF UNEVEN SECONDS:
 console.log(secondsInTotal);
