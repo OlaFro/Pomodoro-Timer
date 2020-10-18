@@ -48,7 +48,7 @@ main {
   content: "";
   position: absolute;
   height: 35px;
-  width: 10px;
+  width: 16px;
   border-radius: 10px;
   background-color: #e0e5ec;
   /* border-left: 20px solid transparent;
@@ -59,12 +59,21 @@ main {
   transform: translate(-50%, 0%);
 }
 
-@keyframes moveTracker {
+@keyframes moveBackward {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(-360deg);
+  }
+}
+
+@keyframes moveForward {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -87,6 +96,7 @@ main {
   background-color: #e0e5ec;
   box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
     inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5);
+  border: 3px solid transparent;
 }
 
 .navigation {
@@ -100,8 +110,6 @@ main {
   font-style: italic;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 50px;
-  /* box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
-    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.8); */
 }
 .panel {
   width: 300px;
@@ -222,12 +230,14 @@ input::-ms-track {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 3px;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
-  border-radius: 15px;
-  background-color: rgba(30, 136, 229, 1);
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(33, 33, 33, 0.5);
+  box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
+    -1px -1px 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 input[type="range"]::-moz-range-thumb {

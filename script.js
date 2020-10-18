@@ -58,6 +58,7 @@ startBtn.addEventListener("click", () => {
 function sessionMode() {
   
   theme("#1e88e5b3", "#ffc10799")
+  progress.style.animation = " ";
 
   switch(sessionCounter){
     case 1:
@@ -100,27 +101,25 @@ function sessionMode() {
     clearInterval(counting);
   }
   progress.style.animation = `move ${secondsInTotal}s linear`;
-  counting = setInterval(countDown, 100);
-  rotateCircle(secondsInTotal)
-  
+  counting = setInterval(countDown, 1000);
+  rotate(secondsInTotal, "backward")
 }
 
 function breakMode() {
-  console.log("break");
+  progress.style.animation = " ";
   minutesInBreak = minB.value;
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Break for ${minB.value} minutes!`;
   timeForBreak = false;
-  counting = setInterval(countDown, 100);
-  rotateCircle(secondsInTotal);
+  counting = setInterval(countDown, 1000);
+  rotate(secondsInTotal, "forward");
   theme("#00c853", "#7e57c2");
 }
 
 
 function countDown() {
   secondsInTotal--;
-  console.log(secondsInTotal);
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
 
@@ -150,22 +149,26 @@ function countDown() {
   } 
 }
 
-function rotateCircle(duration){
+function rotate(duration, direction){
   progress.style.transform = "rotate 0(deg)";
-  progress.style.animation = `moveTracker ${duration}s linear`;
-  // circle.style.animation = `rotateCircle ${duration}s linear`;
-  console.log("rotating for" + duration);
+  if (direction=="backward"){
+  progress.style.animation = `moveBackward ${duration}s linear`;
+  } else {
+    progress.style.animation = `moveForward ${duration}s linear`;
+  }
+  console.log("rotating for " + duration + " in " + direction);
 }
 
 function longBrake(){
+  progress.style.animation = " ";
   theme("#ffc10799","#e57373" )
-  minutesInBreak = 1;
+  minutesInBreak = 20;
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Take 20 minutes break and start again`;
   longerBreak = true;
-
-  counting = setInterval(countDown, 100);
+  rotate(secondsInTotal, "forward");
+  counting = setInterval(countDown, 1000);
 }
 
 
@@ -186,17 +189,23 @@ stopBtn.addEventListener("click", () => {
   stopBtn.classList.toggle("hidden");
   clearInterval(counting);
   sessionCounter = 1
-  for (let circle of dots){
-    circle.style.backgroundColor= ""
-    circle.style.boxShadow=`inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
+  for (let dot of dots){
+   dot.style.backgroundColor= ""
+   dot.style.boxShadow=`inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
       inset -1px -1px 2px 0 rgba(255, 255, 255, 0.5)`;
+     dot.style.border="3px solid transparent"
   }
   minutes.textContent = minS.value;
   seconds.textContent = "00";
   secondsInTotal = minutesInSession * 60;
+  theme("#212121", "")
+  circle.style.boxShadow = `16px 16px 25px rgb(163, 177, 198, 0.7),
+  -16px -16px 25px rgba(255, 255, 255, 0.6)`;
   info.textContent = "Press start"; 
-  progress.style.animationPlayState="paused"
-  progress.style.transform="rotate(0deg)"
+  progress.style.animationPlayState="paused";
+  progress.style.animationFillMode="backwards";
+  progress.style.animation = " ";
+  progress.style.transform = "translate(0%, 0%)"
 });
 
 
@@ -243,21 +252,12 @@ pauseEndBtn.addEventListener("click", ()=>{
 
 /*
 BUGS:
-fixing the animation!!
+
 break 6 min as default value
-color mode for break
-color mode for longer break
-
-
 
 TO DO:
 
-animation of the progress bar
 adding sound
 
-
-IN CASE OF UNEVEN SECONDS:
-console.log(secondsInTotal);
-console.log(new Date().getSeconds());
 
 */
