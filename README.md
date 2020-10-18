@@ -8,4 +8,4 @@ After 25 minutes of work <em>(session)</em> you get a short break <em>(5 minutes
 
 [More information about Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 
-[-> click here to live demo<-]()
+[-> click here to live demo<-](https://olafro.github.io/Pomodoro-Timer/)
