@@ -11,6 +11,7 @@ const displayS = document.getElementById("displayS");
 const displayB = document.getElementById("displayB");
 const info = document.getElementById("info");
 const dots = document.querySelectorAll(".box");
+const icons = document.querySelectorAll("i")
 const progress = document.querySelector(".path");
 const circle = document.querySelector(".circle")
 const fullScreenBtn = document.getElementById("fullScreenBtn")
@@ -55,26 +56,36 @@ startBtn.addEventListener("click", () => {
 
 
 function sessionMode() {
+  
+  theme("#1e88e5b3", "#ffc10799")
 
   switch(sessionCounter){
     case 1:
-      document.getElementById("circle1").style.backgroundColor="rgba(30, 136, 229, 0.7)"
-      document.getElementById("circle1").style.boxShadow="none"
+      document.getElementById("circle1").style.backgroundColor="rgba(33, 33, 33, 0.5)";
+      document.getElementById("circle1").style.border="3px solid rgba(255, 255, 255, 0.5)";
+      document.getElementById("circle1").style.boxShadow=`inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
+      -1px -1px 1px 0 rgba(255, 255, 255, 0.3)`
       break
 
     case 2:
-      document.getElementById("circle2").style.backgroundColor="rgba(30, 136, 229, 0.7)";
-      document.getElementById("circle2").style.boxShadow="none"
+      document.getElementById("circle2").style.backgroundColor="rgba(33, 33, 33, 0.5)";
+      document.getElementById("circle2").style.border="3px solid rgba(255, 255, 255, 0.5)";
+      document.getElementById("circle2").style.boxShadow=`inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
+      -1px -1px 1px 0 rgba(255, 255, 255, 0.3)`
         
     break
     case 3:
-      document.getElementById("circle3").style.backgroundColor="rgba(30, 136, 229, 0.7)"
-      document.getElementById("circle3").style.boxShadow="none"
+      document.getElementById("circle3").style.backgroundColor="rgba(33, 33, 33, 0.5)";
+      document.getElementById("circle3").style.border="3px solid rgba(255, 255, 255, 0.5)";
+      document.getElementById("circle3").style.boxShadow=`inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
+      -1px -1px 1px 0 rgba(255, 255, 255, 0.3)`
       
     break
     case 4:
-      document.getElementById("circle4").style.backgroundColor="rgba(30, 136, 229, 0.7)"
-      document.getElementById("circle4").style.boxShadow="none"
+      document.getElementById("circle4").style.backgroundColor="rgba(33, 33, 33, 0.5)";
+      document.getElementById("circle4").style.border="3px solid rgba(255, 255, 255, 0.5)";
+      document.getElementById("circle4").style.boxShadow=`inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
+      -1px -1px 1px 0 rgba(255, 255, 255, 0.3)`
       timeForBreak = false;
       lastSession = true;
     break
@@ -89,7 +100,7 @@ function sessionMode() {
     clearInterval(counting);
   }
   progress.style.animation = `move ${secondsInTotal}s linear`;
-  counting = setInterval(countDown, 1000);
+  counting = setInterval(countDown, 100);
   rotateCircle(secondsInTotal)
   
 }
@@ -101,8 +112,9 @@ function breakMode() {
   secondsInTotal = minutesInBreak * 60;
   info.textContent = `Break for ${minB.value} minutes!`;
   timeForBreak = false;
-  counting = setInterval(countDown, 1000);
-  rotateCircle(secondsInTotal)
+  counting = setInterval(countDown, 100);
+  rotateCircle(secondsInTotal);
+  theme("#00c853", "#7e57c2");
 }
 
 
@@ -146,28 +158,26 @@ function rotateCircle(duration){
 }
 
 function longBrake(){
-  console.log("break");
-  minutesInBreak = 20;
+  theme("#ffc10799","#e57373" )
+  minutesInBreak = 1;
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
-  info.textContent = `Take a longer 20 minutes break and start again`;
-  body.style.background = "white"
-  body.style.color = "red";
+  info.textContent = `Take 20 minutes break and start again`;
   longerBreak = true;
-  
-  progress.style.animation = `move ${secondsInTotal}s linear`;
-  counting = setInterval(countDown, 1000);
-  rotateCircle(secondsInTotal)
+
+  counting = setInterval(countDown, 100);
 }
 
 
-// function theme(colorMode){
-//   minutes.style.color = "colorMode";
-//   colon.style.color = "colorMode";
-//   seconds.style.color = "colorMode";
-//   window.window.getComputedStyle(
-//     document.querySelector('.path'), '::after').style.color = "colorMode";
-// }
+function theme(colorA, colorB){
+  minutes.style.color = `${colorA}`;
+  colon.style.color = `${colorA}`;
+  seconds.style.color = `${colorA}`;
+  for (icon of icons){
+    icon.style.color = `${colorA}`;
+  }
+  circle.style.boxShadow = `-16px -16px 25px ${colorA}, 16px 16px 25px ${colorB}`;
+}
 
 
 // stopping the timer
@@ -233,8 +243,11 @@ pauseEndBtn.addEventListener("click", ()=>{
 
 /*
 BUGS:
-how to start the counting right away after clicking start?
-how to synchronize the animation of the progress bar?
+fixing the animation!!
+break 6 min as default value
+color mode for break
+color mode for longer break
+
 
 
 TO DO:

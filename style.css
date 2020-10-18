@@ -24,10 +24,13 @@ main {
     -9px -9px 16px rgba(255, 255, 255, 0.6);
 }
 
+.timer {
+  margin: 2rem 0 1rem 0;
+}
 .circle {
   position: relative;
-  box-shadow: -12px -12px 20px rgb(255, 193, 7, 0.6),
-    12px 12px 20px rgb(30, 136, 229, 0.7);
+  box-shadow: 16px 16px 25px rgb(163, 177, 198, 0.7),
+    -16px -16px 25px rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   width: 270px;
   height: 270px;
@@ -65,15 +68,6 @@ main {
   }
 }
 
-@keyframes rotateCircle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .clock {
   position: absolute;
   top: 50%;
@@ -82,9 +76,7 @@ main {
   font-weight: 300;
   font-size: 5rem;
   letter-spacing: -px;
-  color: #1e88e5;
-  /* text-shadow: 0px 0px 6px rgba(255, 193, 7, 0.4),
-    0px 0px 3px rgba(255, 193, 7, 0.6); */
+  color: rgba(33, 33, 33, 0.9);
 }
 
 .box {
@@ -100,6 +92,7 @@ main {
 .navigation {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .info {
@@ -107,8 +100,8 @@ main {
   font-style: italic;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 50px;
-  box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
-    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.8);
+  /* box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px 0 rgba(255, 255, 255, 0.8); */
 }
 .panel {
   width: 300px;
@@ -132,7 +125,7 @@ label {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 300px;
+  width: 280px;
 }
 
 button,
@@ -167,7 +160,7 @@ button {
 }
 
 button i {
-  color: rgba(30, 136, 229, 1);
+  color: rgba(33, 33, 33, 0.9);
 }
 
 button:active {
@@ -182,7 +175,6 @@ button:active {
 
 .mainBtn i {
   font-size: 2rem;
-  color: rgb(255, 193, 7, 1);
 }
 /* styling the input range */
 
@@ -210,7 +202,7 @@ input::-webkit-slider-runnable-track {
 
 input::-moz-range-track {
   width: 100%;
-  height: 15px;
+  height: 16px;
   cursor: pointer;
   background-color: #e0e5ec;
   box-shadow: inset 2px 2px 3px 0 rgba(0, 0, 0, 0.2),
@@ -243,10 +235,9 @@ input[type="range"]::-moz-range-thumb {
   height: 16px;
   width: 16px;
   cursor: pointer;
-  border-radius: 15px;
-
-  border: none;
-  border-radius: 50%;
-  background: rgba(30, 136, 229, 1);
-  /* box-shadow: 5px 5px 10px #707376, -5px -5px 10px #ffffff; */
+  border-radius: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(33, 33, 33, 0.5);
+  box-shadow: inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
+    -1px -1px 1px 0 rgba(255, 255, 255, 0.3);
 }
