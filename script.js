@@ -18,6 +18,8 @@ const fullScreenBtn = document.getElementById("fullScreenBtn")
 const exitFullScreen = document.getElementById("exitFullScreenBtn")
 const pauseStartBtn = document.getElementById("pauseStartBtn")
 const pauseEndBtn = document.getElementById("pauseEndBtn")
+const startSound = new Audio ("start.mp3")
+const stopSound = new Audio ("stop.mp3")
 
 
 // app variables
@@ -50,16 +52,14 @@ startBtn.addEventListener("click", () => {
   startBtn.classList.toggle("hidden");
   stopBtn.classList.toggle("hidden");
   sessionMode();
-  
 });
 
 
 
 function sessionMode() {
-  
+  startSound.play()
   theme("#1e88e5b3", "#ffc10799")
   progress.style.animation = " ";
-
   switch(sessionCounter){
     case 1:
       document.getElementById("circle1").style.backgroundColor="rgba(33, 33, 33, 0.5)";
@@ -110,7 +110,7 @@ function breakMode() {
   minutesInBreak = minB.value;
   minutes.textContent = minutesInBreak;
   secondsInTotal = minutesInBreak * 60;
-  info.textContent = `Break for ${minB.value} minutes!`;
+  info.textContent = `Break for ${minB.value} minute(s)!`;
   timeForBreak = false;
   counting = setInterval(countDown, 1000);
   rotate(secondsInTotal, "forward");
@@ -126,6 +126,10 @@ function countDown() {
   
   if (seconds.textContent < 10) {
     seconds.textContent = "0" + (secondsInTotal % 60);
+  }
+
+  if (secondsInTotal == 1){
+    stopSound.play()
   }
 
   if (secondsInTotal === 0 && timeForBreak == true && lastSession==false) {
@@ -252,12 +256,9 @@ pauseEndBtn.addEventListener("click", ()=>{
 
 /*
 BUGS:
-
 break 6 min as default value
+animation not going to the start after stop button
 
 TO DO:
-
 adding sound
-
-
 */
