@@ -41,7 +41,6 @@ main {
   width: 270px;
   height: 270px;
   border-radius: 50%;
-  /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); */
 }
 
 .path::after {
@@ -51,9 +50,6 @@ main {
   width: 16px;
   border-radius: 10px;
   background-color: #e0e5ec;
-  /* border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 20px solid #e0e5ec; */
   top: -6%;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -184,6 +180,7 @@ button:active {
 .mainBtn i {
   font-size: 2rem;
 }
+
 /* styling the input range */
 
 input[type="range"] {

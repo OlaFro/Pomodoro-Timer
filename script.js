@@ -21,7 +21,6 @@ const pauseEndBtn = document.getElementById("pauseEndBtn")
 const startSound = new Audio ("start.mp3")
 const stopSound = new Audio ("stop.mp3")
 
-
 // app variables
 let minutesInSession = 25;
 let minutesInBreak = 3;
@@ -57,11 +56,12 @@ startBtn.addEventListener("click", () => {
 
 
 function sessionMode() {
-  startSound.play()
+  
   theme("#1e88e5b3", "#ffc10799")
   progress.style.animation = " ";
   switch(sessionCounter){
     case 1:
+      startSound.play()
       document.getElementById("circle1").style.backgroundColor="rgba(33, 33, 33, 0.5)";
       document.getElementById("circle1").style.border="3px solid rgba(255, 255, 255, 0.5)";
       document.getElementById("circle1").style.boxShadow=`inset 2px 2px 2px 0 rgba(0, 0, 0, 0.4),
@@ -120,6 +120,7 @@ function breakMode() {
 
 function countDown() {
   secondsInTotal--;
+
   minutes.textContent = Math.floor(secondsInTotal / 60);
   seconds.textContent = secondsInTotal % 60;
 
@@ -128,7 +129,7 @@ function countDown() {
     seconds.textContent = "0" + (secondsInTotal % 60);
   }
 
-  if (secondsInTotal == 1){
+  if (secondsInTotal == 0){
     stopSound.play()
   }
 
@@ -207,6 +208,9 @@ stopBtn.addEventListener("click", () => {
   -16px -16px 25px rgba(255, 255, 255, 0.6)`;
   info.textContent = "Press start"; 
   progress.style.animationPlayState="paused";
+ 
+
+  // everything that could bring the animation to the starting point but does not work:(
   progress.style.animationFillMode="backwards";
   progress.style.animation = " ";
   progress.style.transform = "translate(0%, 0%)"
@@ -256,9 +260,5 @@ pauseEndBtn.addEventListener("click", ()=>{
 
 /*
 BUGS:
-break 6 min as default value
 animation not going to the start after stop button
-
-TO DO:
-adding sound
 */

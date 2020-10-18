@@ -2,24 +2,10 @@
 
 Project finishing browser module of DCI web-developer course.
 
-The clock counts down 25 minutes. This is called a **session**, a time for a user to focus on tasks.
-After this time clock starts to count down time for the **short break** - 3 minutes. Then session starts again.
-After fourth session comes a **longer break** that takes 20 minutes.
+Pomodoro Timer is a tool that helps you focus on work and don't forget about taking breaks.
 
-Pomodoro clock follows this pattern:
+After 25 minutes of work <em>(session)</em> you get a short break <em>(5 minutes)</em> after which you start next session. By finishing the session number four, you can take a longer break <em>(20 minutes)</em>. With new energy you can than start whole cycle again.
 
-- Session
+[More information about Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 
-* Break
-
-- Session
-
-* Break
-
-- Session
-
-* Break
-
-- Session
-
-* longer break
+[-> click here to live demo<-]()
