@@ -58,7 +58,7 @@ startBtn.addEventListener("click", () => {
 function sessionMode() {
   
   theme("#1e88e5b3", "#ffc10799")
-  progress.style.animation = " ";
+  // progress.style.animation = " ";
   switch(sessionCounter){
     case 1:
       startSound.play()
@@ -207,13 +207,8 @@ stopBtn.addEventListener("click", () => {
   circle.style.boxShadow = `16px 16px 25px rgb(163, 177, 198, 0.7),
   -16px -16px 25px rgba(255, 255, 255, 0.6)`;
   info.textContent = "Press start"; 
-  progress.style.animationPlayState="paused";
- 
+  progress.style.animation="10ms comeBack linear";
 
-  // everything that could bring the animation to the starting point but does not work:(
-  progress.style.animationFillMode="backwards";
-  progress.style.animation = " ";
-  progress.style.transform = "translate(0%, 0%)"
 });
 
 
@@ -257,8 +252,3 @@ pauseEndBtn.addEventListener("click", ()=>{
   progress.style.animationPlayState="running"
 })
 
-
-/*
-BUGS:
-animation not going to the start after stop button
-*/

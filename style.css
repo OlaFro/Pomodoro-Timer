@@ -41,6 +41,7 @@ main {
   width: 270px;
   height: 270px;
   border-radius: 50%;
+  transform: rotate(0deg);
 }
 
 .path::after {
@@ -70,6 +71,17 @@ main {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* .comeBack {
+
+  animation: 1s comeBack linear;
+} */
+
+@keyframes comeBack {
+  to {
+    transform: rotate(300deg);
   }
 }
 
