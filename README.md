@@ -4,7 +4,7 @@
 
 ## Live demo
 
-👉 [Click here](https://olafro.github.io/Pomodoro-timer/) 👈
+👉 [Click here](https://olafro.github.io/Pomodoro-Timer/) 👈
 
 ## About
 
